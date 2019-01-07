@@ -4,6 +4,7 @@ import "./App.css";
 //import Movies from "./components/Movies";
 import NavBar from './components/NavBar';
 
+
 class App extends Component {
   state = {
     counters: [
@@ -16,8 +17,8 @@ class App extends Component {
 
   handleDelete = (counterId) => {
       console.log("E handler called", counterId);
-      const counters = this.state.counters.filter((c=> c.id !== counterId));
-      this.setState({counters:counters});
+      const counters = this.state.counters.filter(c => c.id !== counterId);
+      this.setState({counters: counters});
   };
 
   handleReset = () => {
@@ -45,15 +46,25 @@ class App extends Component {
       this.setState({counters:counters});
   };
 
+  handleDecrement = (counterId) => {
+    console.log(counterId);        
+    const counters = this.state.counters.map(m => {
+        if(m.id === counterId) {m.value--}
+        return m;
+    });
+    this.setState({counters:counters});
+ };
+
   render() {
     return (
       <Fragment>  
-        <NavBar/>
+        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
         <main className="container">
           <Counters
            counters={this.state.counters}
            onReset={this.handleReset}
            onIncrement={this.handleIncrement}
+           onDecrement={this.handleDecrement}
            onDelete={this.handleDelete}
           />
         </main>

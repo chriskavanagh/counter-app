@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class Counter extends Component {  
 
   formatCount = () => {
@@ -19,6 +20,13 @@ class Counter extends Component {
           className="btn btn-outline-secondary btn-sm"
         >
           Increment
+        </button>
+
+        <button
+          onClick={()=>this.props.onDecrement(this.props.counter.id)}
+          className="btn btn-outline-secondary btn-sm"
+        >
+          Decrement
         </button>
 
         <button
