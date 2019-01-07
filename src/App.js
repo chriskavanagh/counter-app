@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Counters from "./components/Counters";
 import "./App.css";
-//import Movies from "./components/Movies";
+import Movies from "./components/Movies";
 import NavBar from './components/NavBar';
 
 
@@ -68,6 +68,7 @@ class App extends Component {
            onDelete={this.handleDelete}
           />
         </main>
+        <Movies />
       </Fragment>
     );
   }
