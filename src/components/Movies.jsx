@@ -17,7 +17,7 @@ export class Movies extends Component {
     this.setState({
       movies: getMovies()
     });
-  }
+  };
 
 
   handleDelete = movie => () => {
@@ -53,7 +53,7 @@ export class Movies extends Component {
             {!count && <h1>No Movies In Database!</h1>}
         </div>
 
-        {count > 0 && (
+        {count && (
           <Fragment>
             <div className="container">
             <h3 className="mb-4">Showing {count} Movies In Database</h3>
