@@ -9,12 +9,12 @@ class Counter extends Component {
   };  
 
   render() {
-    let classes = "badge m-2 badge-pill badge-";
+    let classes = "badge p-2 m-2 badge-pill badge-";
     classes += this.props.counter.value === 0 ? "warning" : "primary";
 
     return (
       <div className="row">
-        <div className="col-1">
+        <div className="col-3">
           <span className={classes}>{this.formatCount()}</span>
         </div>
         <div className="col">

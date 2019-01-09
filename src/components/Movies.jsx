@@ -1,17 +1,24 @@
 import React, { Component, Fragment } from "react";
 import Like from './common/Like';
 import { getMovies } from "./../services/fakeMovieService";
+import Pagination from './common/Pagination';
+import { paginate } from '../utils/Paginate';
+
 
 export class Movies extends Component {
   state = {
-    movies: []
+    movies: [],
+    pageSize: 4,
+    currentPage: 1
   };
+
 
   componentDidMount() {
     this.setState({
       movies: getMovies()
     });
   }
+
 
   handleDelete = movie => () => {
     const movies = this.state.movies.filter(m => {
@@ -20,24 +27,35 @@ export class Movies extends Component {
     this.setState({ movies: movies });
   };
 
+
   handleLike = (movie) => {
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index] = {...movies[index]};
     movies[index].liked = !movies[index].liked;
     this.setState({movies})
-  }
+  };
+
+
+  handlePageChange = (page) => {
+    this.setState({currentPage: page})
+  };
+
 
   render() {
     const { length: count } = this.state.movies;
+    const { pageSize, currentPage, movies: allMovies } = this.state;
+    const movies = paginate(allMovies, currentPage, pageSize);
+    
     return (
-      <div className="container-fluid pt-4">
+      <div className="container pt-4">
         <div className="mt-4">
             {!count && <h1>No Movies In Database!</h1>}
         </div>
 
         {count > 0 && (
           <Fragment>
+            <div className="container">
             <h3 className="mb-4">Showing {count} Movies In Database</h3>
             <table className="table">
               <thead>
@@ -51,7 +69,7 @@ export class Movies extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.movies.map(movie => (
+                {movies.map(movie => (
                   <tr key={movie._id}>
                     <td>{movie.title}</td>
                     <td>{movie.genre.name}</td>
@@ -72,6 +90,13 @@ export class Movies extends Component {
                 ))}
               </tbody>
             </table>
+            <Pagination 
+              itemsCount={count} 
+              pageSize={pageSize}
+              currentPage={currentPage} 
+              onPageChange={this.handlePageChange}
+            />
+            </div>
           </Fragment>
         )}
       </div>
