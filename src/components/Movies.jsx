@@ -12,8 +12,10 @@ export class Movies extends Component {
     movies: [],
     pageSize: 4,
     genres: [],
-    currentPage: 1
+    currentPage: 1,
+    selectedGenre: "",
   };
+
 
   componentDidMount() {
     this.setState({
@@ -22,12 +24,14 @@ export class Movies extends Component {
     });
   };
 
+
   handleDelete = movie => () => {
     const movies = this.state.movies.filter(m => {
       return movie._id !== m._id;
     });
       this.setState({ movies: movies });
   };
+
 
   handleLike = (movie) => {
     const movies = [...this.state.movies];
@@ -37,26 +41,33 @@ export class Movies extends Component {
     this.setState({movies})
   };
 
+
   handlePageChange = (page) => {
     this.setState({currentPage: page})
   };
 
+
   handleGenreSelect = (genre) => {
-    console.log(genre);
-  };
+    console.log(`Item = ${JSON.stringify(genre)}`)
+    this.setState({selectedGenre: genre});
+  }; 
 
 
   render() {
     const { length: count } = this.state.movies;
-    const { pageSize, currentPage, movies: allMovies } = this.state;
-    const movies = paginate(allMovies, currentPage, pageSize);
+    const { pageSize, currentPage, selectedGenre, movies: allMovies } = this.state;
+    const filtered = selectedGenre
+     ? allMovies.filter(m => m.genre._id === selectedGenre._id) 
+     : allMovies;
+    const movies = paginate(filtered, currentPage, pageSize);
     
     return (
       <div className="container">
        <div className="row">
          <div className="col-3 m-4">
            <ListGroup 
-            items={this.state.genres} 
+            items={this.state.genres}
+            selectedItem={this.state.selectedGenre} 
             onItemSelect={this.handleGenreSelect}
            />
          </div>
