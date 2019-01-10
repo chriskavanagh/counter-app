@@ -59,15 +59,7 @@ class App extends Component {
     return (
       <Fragment>  
         <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
-        <main >
-          <Counters
-           counters={this.state.counters}
-           onReset={this.handleReset}
-           onIncrement={this.handleIncrement}
-           onDecrement={this.handleDecrement}
-           onDelete={this.handleDelete}
-          />
-        </main>
+        
         <Movies className="movies"/>
       </Fragment>
     );
