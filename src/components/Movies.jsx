@@ -54,11 +54,19 @@ export class Movies extends Component {
 
 
   render() {
+    // destrucutre length out of state.movies, change name to 'count'
     const { length: count } = this.state.movies;
+
+    // destructure state
     const { pageSize, currentPage, selectedGenre, movies: allMovies } = this.state;
-    const filtered = selectedGenre
-     ? allMovies.filter(m => m.genre._id === selectedGenre._id) 
-     : allMovies;
+
+    // filter movies, if genre is "All" returns all Movies, otherwise by genre
+    const filtered = 
+      selectedGenre.name === "All" ? allMovies
+      : selectedGenre ? allMovies.filter(m => m.genre._id === selectedGenre._id)
+      : allMovies;
+
+      // paginates movies by page based on filtered variable
     const movies = paginate(filtered, currentPage, pageSize);
     
     return (
