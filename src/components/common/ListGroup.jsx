@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const ListGroup = (props) => {
     const {
             items,
@@ -11,7 +10,7 @@ const ListGroup = (props) => {
          } = props;
 
     return (
-    <ul className="list-group">
+    <ul className="list-group" style={{marginTop: "60px", cursor: "pointer"}}>
       {items.map(item => 
         <li
          onClick={() => onItemSelect(item)}
@@ -21,7 +20,7 @@ const ListGroup = (props) => {
           : "list-group-item"}>
          {item[textProperty]}
         </li>
-    )}            
+      )}            
     </ul>
   )
 };
