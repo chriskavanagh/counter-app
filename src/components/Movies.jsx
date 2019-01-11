@@ -18,9 +18,11 @@ export class Movies extends Component {
 
 
   componentDidMount() {
+    const genres = [{name: "All Genres"}, ...getGenres()]
     this.setState({
       movies: getMovies(),
-      genres: getGenres()
+      genres: genres
+      // genres: getGenres()
     });
   };
 
@@ -49,7 +51,7 @@ export class Movies extends Component {
 
   handleGenreSelect = (genre) => {
     console.log(`Item = ${JSON.stringify(genre)}`)
-    this.setState({selectedGenre: genre});
+    this.setState({selectedGenre: genre, currentPage: 1});
   }; 
 
 
@@ -61,10 +63,9 @@ export class Movies extends Component {
     const { pageSize, currentPage, selectedGenre, movies: allMovies } = this.state;
 
     // filter movies, if genre is "All" returns all Movies, otherwise by genre
-    const filtered = 
-      selectedGenre.name === "All" ? allMovies
-      : selectedGenre ? allMovies.filter(m => m.genre._id === selectedGenre._id)
-      : allMovies;
+    const filtered = selectedGenre && selectedGenre._id
+    ? allMovies.filter(m => m.genre._id === selectedGenre._id) 
+    : allMovies;
 
       // paginates movies by page based on filtered variable
     const movies = paginate(filtered, currentPage, pageSize);
@@ -87,7 +88,7 @@ export class Movies extends Component {
 
             {count && (         
                 <div>
-                <h3 className="mb-4">Showing {count} Movies In Database</h3>
+                <h3 className="mb-4">Showing {filtered.length} Movies In Database</h3>
                 <table className="table">
                   <thead>
                     <tr>
