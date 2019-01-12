@@ -77,7 +77,7 @@ export class Movies extends Component {
     // lodash orderBy table headings
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
-      // paginates movies by page based on filtered variable
+     // paginates movies by page based on filtered variable
     const movies = paginate(sorted, currentPage, pageSize);
     
     return (
@@ -98,7 +98,7 @@ export class Movies extends Component {
 
             {count && (         
                 <div>
-                <h3 className="mb-4 text-center">
+                <h3 className="mb-4 text-center header1">
                   Showing {filtered.length} Movies In Database
                 </h3>
                 <MoviesTable
