@@ -3,7 +3,7 @@ import React, { Component, Fragment } from "react";
 import "./App.css";
 import Movies from "./components/Movies";
 import NavBar from './components/NavBar';
-import Prompt from './components/Prompt';
+//import Prompt from './components/Prompt';
 
 
 class App extends Component {
@@ -57,11 +57,11 @@ class App extends Component {
  };
 
   render() {
+    const { counters } = this.state;
     return (
       <Fragment>  
-        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>        
-        <Movies className="movies"/>
-        <Prompt />
+        <NavBar totalCounters={counters.filter(c => c.value > 0).length} />
+        <Movies className="movies"/>                
       </Fragment>
     );
   }

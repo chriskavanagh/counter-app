@@ -25,23 +25,29 @@ export class Prompt extends Component {
   render() {
       //const { name, salary } = this.state.employees;
     return (
-      <div className="container">
-          {this.state.employees.map((emp, i) => (              
+      <div className="container promptClass">
+      <div className="row">
+        <div className="col-6">
+          {this.state.employees.map((emp, i) =>               
             <li key={i}>
                 <h2>Employee Name: {emp.name}</h2>
                 <h2>Salary: {emp.salary}</h2>
             </li>
-          ))}          
+          )}
+          
+                    
           <button
             className="btn btn-primary"
             onClick={this.addEmployee}>
             Add record
           </button>
           <button
-            className="btn btn-danger m-2"
+            className="btn btn-danger"
             onClick={this.resetEmployees}>
             Reset
           </button>
+          </div>
+          </div>
       </div>
     )
   }

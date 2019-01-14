@@ -56,9 +56,9 @@ export class Movies extends Component {
   }; 
 
 
-  handleSort = (path) => {
-    this.setState({sortColumn: {path: path, order: 'asc'}})
-  }
+  handleSort = (sortColumn) => {    
+    this.setState({sortColumn})
+  };
 
   render() {
     // destrucutre length out of state.movies, change name to 'count'
@@ -103,6 +103,7 @@ export class Movies extends Component {
                 </h3>
                 <MoviesTable
                   movies={movies}
+                  sortColumn={sortColumn}
                   onLike={this.handleLike}
                   onSort={this.handleSort}
                   onDelete={this.handleDelete}
@@ -120,6 +121,6 @@ export class Movies extends Component {
           </div>
         );
       }
-}
+}//  ./Movies
 
 export default Movies;
