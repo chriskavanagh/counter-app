@@ -1,6 +1,7 @@
 import React from 'react';
 import Like from './common/Like';
 
+
 const MoviesTable = (props) => {
     const { movies, onDelete, onLike, onSort } = props;
     return (

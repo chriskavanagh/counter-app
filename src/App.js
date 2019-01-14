@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from "react";
-import Counters from "./components/Counters";
+//import Counters from "./components/Counters";
 import "./App.css";
 import Movies from "./components/Movies";
 import NavBar from './components/NavBar';
+import Prompt from './components/Prompt';
 
 
 class App extends Component {
@@ -58,9 +59,9 @@ class App extends Component {
   render() {
     return (
       <Fragment>  
-        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
-        
+        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>        
         <Movies className="movies"/>
+        <Prompt />
       </Fragment>
     );
   }
