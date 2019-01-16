@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class Like extends Component {
+class Like extends Component {
   render() {
     let classes = "fa fa-heart";
     if (!this.props.liked) {classes += "-o"};
