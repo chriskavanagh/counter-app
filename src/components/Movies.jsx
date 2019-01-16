@@ -7,7 +7,8 @@ import { paginate } from '../utils/Paginate';
 import ListGroup from './common/ListGroup';
 import _ from 'lodash';
 
-export class Movies extends Component {
+
+class Movies extends Component {
   state = {
     movies: [],
     pageSize: 4,
@@ -28,7 +29,7 @@ export class Movies extends Component {
   };
 
 
-  handleDelete = movie => () => {
+  handleDelete = (movie) => () => {
     const movies = this.state.movies.filter(m => {
       return movie._id !== m._id;
     });
@@ -121,6 +122,6 @@ export class Movies extends Component {
           </div>
         );
       }
-}//  ./Movies
+} // end class Movies
 
 export default Movies;
