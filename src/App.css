@@ -9,6 +9,8 @@ span.num{
 .header1 {
   color: #0275d8;
   font-weight: bold;
+  margin-top: 100px;
+  padding-bottom: 50px;
 }
 
 li.list-group-item {

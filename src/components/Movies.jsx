@@ -84,7 +84,7 @@ class Movies extends Component {
     return (
       <div className="container">
        <div className="row">
-         <div className="col-3 m-4">
+         <div className="col-md-3 col-sm-6 m-4">
            <ListGroup 
             items={this.state.genres}
             selectedItem={this.state.selectedGenre} 
@@ -93,15 +93,15 @@ class Movies extends Component {
          </div>
 
           <div className="col">            
-            <div className="mt-4">
+            <div>
                 {!count && <h1>No Movies In Database!</h1>}
             </div>
 
             {count && (         
                 <div>
-                <h3 className="mb-4 text-center header1">
+                <h2 className="text-center header1">
                   Showing {filtered.length} Movies In Database
-                </h3>
+                </h2>
                 <MoviesTable
                   movies={movies}
                   sortColumn={sortColumn}

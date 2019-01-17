@@ -3,7 +3,7 @@ import React from 'react';
 const ListGroup=({items,textProperty,valueProperty,onItemSelect,selectedItem})=>{
 
     return (
-    <ul className="list-group" style={{marginTop: "60px", cursor: "pointer"}}>
+    <ul className="list-group" style={{marginTop: "170px", cursor: "pointer"}}>
       {items.map(item => 
         <li
          onClick={() => onItemSelect(item)}
